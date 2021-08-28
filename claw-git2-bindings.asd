@@ -7,4 +7,4 @@
   :depends-on (:uiop :cffi)
   :components
   ((:file "bindings/x86_64-pc-linux-gnu" :if-feature
-    (:and :x86-64 :linux))))
+    (:and :x86-64 (:or :linux :darwin)))))
