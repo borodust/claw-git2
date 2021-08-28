@@ -22,8 +22,13 @@
   0)
 
 
-(defun run (repository-path &key (library-name "libgit2.so"))
-  (cffi:load-foreign-library library-name)
+(defun run (repository-path &key library-name)
+  (cffi:load-foreign-library (or library-name
+                                 (cond
+                                   ((uiop:featurep :linux) "libgit2.so")
+                                   ((uiop:featurep :darwin) "libgit2.dylib")
+                                   ((uiop:featurep :windows) "git2.dll")
+                                   (t (error "Unrecognized OS. Please, provide library-name")))))
 
   (%git:libgit2-init)
 

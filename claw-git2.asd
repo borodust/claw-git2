@@ -25,6 +25,7 @@
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
+  :defsystem-depends-on (:trivial-features)
   :depends-on (:alexandria :cffi-c-ref :cffi :claw-git2)
   :pathname "example/"
   :serial t
